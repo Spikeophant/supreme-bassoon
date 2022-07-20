@@ -37,13 +37,21 @@ var userPassword = {
       alert("You failed to add any character types to your password character pool, please click Generate password " +
       "Again and click okay on at least one character type.")
     }
+  },
+
+  // add method to check if we have data in our userPassword object.  If the pwLength is 0, we've never gathered data.
+  // Or perhaps we intend to gather again.
+  hasData: function () {
+    return this.pwLength !== 0;
   }
 }
 
 // Write password to the #password input
 function writePassword() {
   //let's  get the inputs.
-  userPassword.getInputs();
+  if (userPassword.hasData()) {
+    userPassword.getInputs();
+  }
   //let's output what we received from the user for debugging.
   console.log(userPassword)
   //var password = generatePassword();
@@ -51,6 +59,10 @@ function writePassword() {
 
   passwordText.value = password;
 
+  //once we write password reset the truthiness of the object hasData method.
+  userPassword.pwLength = 0;
+  //remove password from memory.
+  user.password = "";
 }
 
 // Add event listener to generate button
