@@ -49,7 +49,7 @@ var userPassword = {
 // Write password to the #password input
 function writePassword() {
   //let's  get the inputs.
-  if (userPassword.hasData()) {
+  if (!userPassword.hasData()) {
     userPassword.getInputs();
   }
   //let's output what we received from the user for debugging.
@@ -62,7 +62,7 @@ function writePassword() {
   //once we write password reset the truthiness of the object hasData method.
   userPassword.pwLength = 0;
   //remove password from memory.
-  user.password = "";
+  userPassword.password = "";
 }
 
 // Add event listener to generate button
