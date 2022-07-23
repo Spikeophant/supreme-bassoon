@@ -50,6 +50,7 @@ var userPassword = {
     //do we have the data we need to gen one?
     if (this.hasLower || this.hasUpper || this.hasNum || this.hasSC) {
       var passwordChars = "";
+      //concat in all the right chars.
       if (this.hasLower) {
         passwordChars = passwordChars.concat("abcdefghijklmnopqrstuvwxyz");
       }
@@ -62,9 +63,11 @@ var userPassword = {
       if (this.hasSC) {
         passwordChars = passwordChars.concat("!@#$%^&*(){}[]:;',.<>?/-_=+")
       }
+      //initialize pass.
       var pass = "";
-      for (var i = 0; i < passwordChars.length; i++) {
-        pass += passwordChars.charAt(Math.floor(Math.random() * this.pwLength))
+      for (var i = 0; i < this.pwLength; i++) {
+        pass += passwordChars.charAt(Math.floor(Math.random() * passwordChars.length));
+        console.log(i)
       }
       this.password = pass;
     } else {
