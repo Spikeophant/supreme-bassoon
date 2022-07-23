@@ -11,6 +11,8 @@ For localhost development open index.html in your modern browser of choice.
 ## Usage
 
 Select options for password generation and you will be presented with a password.  TODO: add storage and retrieval, as well as encryption.
+The application is available here:
+![Supreme Bassoon Password Generation](https://spikeophant.github.io/supreme-bassoon/)
 
 ![Generate Password Homepage](assets/images/genPassHome.png)
  
