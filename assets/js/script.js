@@ -82,8 +82,6 @@ function writePassword() {
   //let's  get the inputs.
   userPassword.getInputs();
   userPassword.generatePassword();
-  //let's output what we received from the user for debugging.
-  console.log(userPassword);
   //var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
