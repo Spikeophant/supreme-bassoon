@@ -67,7 +67,6 @@ var userPassword = {
       var pass = "";
       for (var i = 0; i < this.pwLength; i++) {
         pass += passwordChars.charAt(Math.floor(Math.random() * passwordChars.length));
-        console.log(i)
       }
       this.password = pass;
     } else {
