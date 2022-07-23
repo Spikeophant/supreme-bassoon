@@ -43,21 +43,49 @@ var userPassword = {
   // Or perhaps we intend to gather again.
   hasData: function () {
     return this.pwLength !== 0;
-  }
+  },
+  // Generate password
+  generatePassword: function () {
+    console.log("Generating Password.")
+    //do we have the data we need to gen one?
+    if (this.hasLower || this.hasUpper || this.hasNum || this.hasSC) {
+      var passwordChars = "";
+      if (this.hasLower) {
+        passwordChars = passwordChars.concat("abcdefghijklmnopqrstuvwxyz");
+      }
+      if (this.hasUpper) {
+        passwordChars = passwordChars.concat("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+      }
+      if (this.hasNum) {
+        passwordChars = passwordChars.concat("1234567890");
+      }
+      if (this.hasSC) {
+        passwordChars = passwordChars.concat("!@#$%^&*(){}[]:;',.<>?/-_=+")
+      }
+      var pass = "";
+      for (var i = 0; i < passwordChars.length; i++) {
+        pass += passwordChars.charAt(Math.floor(Math.random() * this.pwLength))
+      }
+      this.password = pass;
+    } else {
+        alert("Something went wrong, please try again.");
+        console.log("Something went wrong, please try again: ")
+        console.log(this.userPassword)
+      }
+    }
 }
 
 // Write password to the #password input
 function writePassword() {
   //let's  get the inputs.
-  if (!userPassword.hasData()) {
-    userPassword.getInputs();
-  }
+  userPassword.getInputs();
+  userPassword.generatePassword();
   //let's output what we received from the user for debugging.
-  console.log(userPassword)
+  console.log(userPassword);
   //var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
+  passwordText.value = userPassword.password;
 
   //once we write password reset the truthiness of the object hasData method.
   userPassword.pwLength = 0;
